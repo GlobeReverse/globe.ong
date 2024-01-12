@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Globe | @Namecall</title>
+	<link rel="icon" href="https://cdn.discordapp.com/attachments/929182821556305992/1179735347450617856/Me_In_My_Free_Time.jpg?ex=657add29&is=65686829&hm=4db362a59eeccf2559730c84dd46a335af26ea1732397bcf64e0c6f869192476&" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/index.css">
+	<link rel="stylesheet" href="assets/css/card.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+</head>
+
+<body>
+	<!-- Button Overlay -->
+	<div id="overlay">
+		<div class="overlay-content">
+			<button id="enterButton" class="button-replay">
+				<div class="text"></div>
+			</button>
+		</div>
+	</div>
+
+	<video id="backgroundVideo" autoplay loop>
+		<source src="https://cdn.discordapp.com/attachments/732142111226331186/1187955288419082240/video.mp4?ex=6598c493&is=65864f93&hm=36f520c5dca9f080c5b8da3e31225eb98b56cad482ea943cf3d88e8565a4c494&" type="video/mp4"> Your browser does not support the video tag. </video>
+	</div>
+
+	<!-- Main Handler -->
+	<div id="wrapper">
+		<div id="card">
+			<!--===== DISCORD PROFILE BANNER =====-->
+			<div id="banner" style="background-image: url(https://cdn.discordapp.com/banners/432407062194946048/3170ea66a4ba7b9d107e90a90c293d53.png?size=480);"></div>
+			<div id="user-info">
+				<div id="avatar">
+					<img src="" id="av">
+					<div id="status"></div>
+				</div>
+				<!--===== BADGES =====-->
+				<div id="badges">
+
+				</div>
+				<!--===== NAME =====-->
+				<div id="username">globe<span>#0000</span></div>
+			</div>
+			<hr />
+			<!--===== ABOUT ME =====-->
+			<div id="about">
+				<h4>About me</h4>
+				<p>Lua Developer</p>
+				<p>JavaScript Developer</p>
+				<p>Soon To Be Php Demon</p>
+			</div>
+			<!--===== ACTIVITY STATUS =====-->
+			<div id="activity">
+			</div>
+			<!--===== SOCIAL =====-->
+			<div id="social">
+				<a class="social-link" href="https://steamcommunity.com/id/hookmetamethod" target="_blank">
+					<img src="assets/images/steam.jpg" alt="Steam" />
+				</a>
+				<a class="social-link" href="https://open.spotify.com/user/lachlan-08" target="_blank">
+					<img src="assets/images/spotify.png" alt="Spotify" />
+				</a>
+				<a class="social-link" href="https://github.com/GlobeReverse" target="_blank">
+					<img src="assets/images/github.png" alt="Github" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		const overlay = document.getElementById("overlay")
+		const enterButton = document.getElementById("enterButton")
+		const backgroundMusic = document.getElementById("backgroundMusic")
+		const backgroundVideo = document.getElementById("backgroundVideo")
+
+		enterButton.addEventListener("click", function() {
+			backgroundVideo.play()
+			//backgroundMusic.play()
+
+			overlay.style.visibility = "hidden"
+			overlay.style.opacity = 0
+		})
+	})
+	class TextScramble {
+		constructor(el) {
+			this.el = el
+			this.chars = '!<>-_\\/[]{}—=+*^?#________'
+			this.update = this.update.bind(this)
+		}
+		setText(newText) {
+			const oldText = this.el.innerText
+			const length = Math.max(oldText.length, newText.length)
+			const promise = new Promise(resolve => this.resolve = resolve)
+			this.queue = []
+			for(let i = 0; i < length; i++) {
+				const from = oldText[i] || ''
+				const to = newText[i] || ''
+				const start = Math.floor(Math.random() * 40)
+				const end = start + Math.floor(Math.random() * 40)
+				this.queue.push({
+					from,
+					to,
+					start,
+					end
+				})
+			}
+			cancelAnimationFrame(this.frameRequest)
+			this.frame = 0
+			this.update()
+			return promise
+		}
+		update() {
+			let output = ''
+			let complete = 0
+			for(let i = 0, n = this.queue.length; i < n; i++) {
+				let {
+					from,
+					to,
+					start,
+					end,
+					char
+				} = this.queue[i]
+				if(this.frame >= end) {
+					complete++
+					output += to
+				} else if(this.frame >= start) {
+					if(!char || Math.random() < 0.28) {
+						char = this.randomChar()
+						this.queue[i].char = char
+					}
+					output += `<span class="dud">${char}</span>`
+				} else {
+					output += from
+				}
+			}
+			this.el.innerHTML = output
+			if(complete === this.queue.length) {
+				this.resolve()
+			} else {
+				this.frameRequest = requestAnimationFrame(this.update)
+				this.frame++
+			}
+		}
+		randomChar() {
+			return this.chars[Math.floor(Math.random() * this.chars.length)]
+		}
+	}
+	const phrases = ['click to enter,', 'click to enter...', 'enter', 'enter the abyss', 'entrance', 'click to enter', 'click to enter']
+	const el = document.querySelector('.text')
+	const fx = new TextScramble(el)
+	let counter = 0
+	const next = () => {
+		fx.setText(phrases[counter]).then(() => {
+			setTimeout(next, 800)
+		})
+		counter = (counter + 1) % phrases.length
+	}
+	next() 
+	</script>
+    
+	<div data-tippy-root id="tippy-3" style="pointer-events: none; z-index: 9999; visibility: visible; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(388px, -525px);"></div>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script src="assets/js/socket.js"></script>
+	<script src="assets/js/config.js"></script>
+</body>
+
+</html>
