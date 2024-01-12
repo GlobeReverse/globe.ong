@@ -1,6 +1,6 @@
-//- Remade all my self since the original was fucking obfuscated for no reason???
+// Remade all my self since the original was fucking obfuscated for no reason???
 async function Update() {
-    const request = await fetch("https://api.lanyard.rest/v1/users/432407062194946048")
+    const request = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`)
     const Userdata = await request.json()
     
     if (!Userdata.success) return
@@ -31,7 +31,7 @@ Update()
 const socket = new WebSocket('wss://api.lanyard.rest/socket')
 
 socket.addEventListener('open', (event) => {
-    socket.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: ["432407062194946048"] } }));
+    socket.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: [ USER_ID ] } }));
 })
 
 socket.addEventListener('message', (event) => {
