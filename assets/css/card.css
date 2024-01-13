@@ -136,3 +136,10 @@ hr {
         border-radius: 0
     }
 }
+
+@media (max-width: 582px) { 
+    body {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
