@@ -25,6 +25,7 @@
 		</div>
 	</div>
 
+	<!-- Background Video -->
 	<video id="backgroundVideo" autoplay loop>
 		<source src="https://cdn.discordapp.com/attachments/732142111226331186/1187955288419082240/video.mp4?ex=6598c493&is=65864f93&hm=36f520c5dca9f080c5b8da3e31225eb98b56cad482ea943cf3d88e8565a4c494&" type="video/mp4"> Your browser does not support the video tag. </video>
 	</div>
@@ -34,6 +35,7 @@
 		<div id="card">
 			<!--===== DISCORD PROFILE BANNER =====-->
 			<div id="banner" style="background-image: url(https://cdn.discordapp.com/banners/432407062194946048/3170ea66a4ba7b9d107e90a90c293d53.png?size=480);"></div>
+			
 			<div id="user-info">
 				<div id="avatar">
 					<img src="" id="av">
@@ -47,6 +49,7 @@
 				<div id="username">globe<span>#0000</span></div>
 			</div>
 			<hr />
+
 			<!--===== ABOUT ME =====-->
 			<div id="about">
 				<h4>About me</h4>
@@ -54,17 +57,13 @@
 				<p>JavaScript Developer</p>
 				<p>Soon To Be Php Demon</p>
 			</div>
-			<!--===== ACTIVITY STATUS =====-->
-			<div id="activity">
-			</div>
+
 			<!--===== SOCIAL =====-->
 			<div id="social">
 				<a class="social-link" href="https://steamcommunity.com/id/hookmetamethod" target="_blank">
 					<img src="assets/images/steam.jpg" alt="Steam" />
 				</a>
-				<a class="social-link" href="https://open.spotify.com/user/lachlan-08" target="_blank">
-					<img src="assets/images/spotify.png" alt="Spotify" />
-				</a>
+
 				<a class="social-link" href="https://github.com/GlobeReverse" target="_blank">
 					<img src="assets/images/github.png" alt="Github" />
 				</a>
@@ -83,8 +82,25 @@
 			const overlay = document.getElementById("overlay")
 			const enterButton = document.getElementById("enterButton")
 			const backgroundVideo = document.getElementById("backgroundVideo")
+			const RandomChooser = Math.round((Math.random() * 4) + 1)
+
+			backgroundVideo.control
+			switch (RandomChooser) {
+				case 4: // Kennington
+					backgroundVideo.src = "https://cdn.discordapp.com/attachments/718589480285765662/1195608109398376448/Bis_X_Blanco_X_Active_X_MizOrMac_-_Kennington_Where_It_Started_HarlemSpartans_-_Trim.mp4?ex=65b49bd2&is=65a226d2&hm=e2f927d59c8abb681e9157d03831d9a8838a97d548a33d873e495315e80614bb&"
+					break 
+				case 3: // Kennington
+					backgroundVideo.src = "https://cdn.discordapp.com/attachments/718589480285765662/1195608109398376448/Bis_X_Blanco_X_Active_X_MizOrMac_-_Kennington_Where_It_Started_HarlemSpartans_-_Trim.mp4?ex=65b49bd2&is=65a226d2&hm=e2f927d59c8abb681e9157d03831d9a8838a97d548a33d873e495315e80614bb&" 
+					break
+				case 2: // Fuck All The Opps
+					backgroundVideo.src = "https://cdn.discordapp.com/attachments/732142111226331186/1187955288419082240/video.mp4?ex=6598c493&is=65864f93&hm=36f520c5dca9f080c5b8da3e31225eb98b56cad482ea943cf3d88e8565a4c494&"
+					break
+				default: // Sava X Mb x Mini
+					backgroundVideo.src = "https://cdn.discordapp.com/attachments/718589480285765662/1195608912284631050/TPL_Sava_x_Bm_x_Mini_OTP_-_Haringey_Borough_Music_Video_-_Trim.mp4?ex=65b49c92&is=65a22792&hm=28599f3356f21e136ea3596e46778bea73ae5f02ce7e15827204c85a21253d2d&"
+			}
 
 			enterButton.addEventListener("click", function() {
+				backgroundVideo.pause()
 				backgroundVideo.play()
 				overlay.style.visibility = "hidden"
 				overlay.style.opacity = 0
@@ -105,5 +121,5 @@
 		next()
 	</script>
 </body>
-
+ 
 </html>
