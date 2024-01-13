@@ -26,9 +26,8 @@
 	</div>
 
 	<!-- Background Video -->
-	<video id="backgroundVideo" autoplay loop controls webkit-playsinline playsinline>
-		<source src="https://cdn.discordapp.com/attachments/732142111226331186/1187955288419082240/video.mp4?ex=6598c493&is=65864f93&hm=36f520c5dca9f080c5b8da3e31225eb98b56cad482ea943cf3d88e8565a4c494&" type="video/mp4">
-		Your browser does not support the video tag.
+	<video id="backgroundVideo" loop controls webkit-playsinline playsinline>
+		<source src="https://cdn.discordapp.com/attachments/732142111226331186/1187955288419082240/video.mp4?ex=6598c493&is=65864f93&hm=36f520c5dca9f080c5b8da3e31225eb98b56cad482ea943cf3d88e8565a4c494&" type="video/mp4">Your browser does not support the video tag.
 	</video>	  
 
 	<!-- Main Handler -->
@@ -84,7 +83,7 @@
 			const enterButton = document.getElementById("enterButton")
 			const backgroundVideo = document.getElementById("backgroundVideo")
 			const RandomChooser = Math.round((Math.random() * 4) + 1)
-			
+
 			backgroundVideo.controls = false
 			
 			switch (RandomChooser) {
