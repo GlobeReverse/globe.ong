@@ -84,8 +84,9 @@
 			const enterButton = document.getElementById("enterButton")
 			const backgroundVideo = document.getElementById("backgroundVideo")
 			const RandomChooser = Math.round((Math.random() * 4) + 1)
-
-			backgroundVideo.control
+			
+			backgroundVideo.controls = false
+			
 			switch (RandomChooser) {
 				case 4: // Kennington
 					backgroundVideo.src = "https://cdn.discordapp.com/attachments/718589480285765662/1195608109398376448/Bis_X_Blanco_X_Active_X_MizOrMac_-_Kennington_Where_It_Started_HarlemSpartans_-_Trim.mp4?ex=65b49bd2&is=65a226d2&hm=e2f927d59c8abb681e9157d03831d9a8838a97d548a33d873e495315e80614bb&"
@@ -101,7 +102,6 @@
 			}
 
 			enterButton.addEventListener("click", function() {
-				backgroundVideo.pause()
 				backgroundVideo.play()
 				overlay.style.visibility = "hidden"
 				overlay.style.opacity = 0
