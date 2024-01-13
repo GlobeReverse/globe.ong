@@ -5,4 +5,4 @@ So, basically I found a website for [this template](https://github.com/theosanct
 <img src="https://r2.e-z.host/2319035a-e3c7-432d-9413-f474d133b997/twe7oi5z.png" />
 
 ## How To Setup
-Majority of the stuff to configure is in the config.js file locatated in assets/js/config.js, the rest will be in the index.html file, im not going to show you how to do it becuase its very self explanatory
+Majority of the stuff to configure is in the `config.js` file locatated in `assets/js/config.js`, the rest will be in the index.html file, im not going to show you how to do it becuase its very self explanatory
