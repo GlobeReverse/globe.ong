@@ -9,7 +9,7 @@ async function Update() {
     document.getElementById("status").style.backgroundColor = STATUS[Userdata.data.discord_status].color
 
     // Avatar 
-    document.getElementById('av').src = `https://cdn.discordapp.com/avatars/${Userdata.data.discord_user.id}/${Userdata.data.discord_user.avatar}.webp`
+    document.getElementById('av').src = `https://cdn.discordapp.com/avatars/${Userdata.data.discord_user.id}/${Userdata.data.discord_user.avatar}`
 
     // Badges
     if (document.getElementById('badge')) return 
