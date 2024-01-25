@@ -1,4 +1,4 @@
-// Remade all my self since the original was fucking obfuscated for no reason???
+// Remade my self since the original was fucking obfuscated for no reason???
 async function Update() {
     const request = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`)
     const Userdata = await request.json()
