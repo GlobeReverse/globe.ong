@@ -62,3 +62,16 @@ class TextScramble {
         return this.chars[Math.floor(Math.random() * this.chars.length)]
     }
 }
+
+const phrases = ['click to enter,', 'click to enter...', 'enter', 'enter the abyss', 'entrance', 'click to enter', 'click to enter']
+const fx = new TextScramble(document.querySelector('.text'))
+let counter = 0
+
+const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 800)
+    })
+    counter = (counter + 1) % phrases.length
+}
+
+next()
