@@ -36,5 +36,7 @@ socket.addEventListener('open', (event) => {
 
 socket.addEventListener('message', (event) => {
     const data = JSON.parse(event.data)
-    if (data.t == "PRESENCE_UPDATE") Update()
+    
+    if (data.t == "PRESENCE_UPDATE") 
+        Update()
 })
