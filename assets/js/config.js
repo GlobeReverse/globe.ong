@@ -9,7 +9,7 @@ const BADGES = [
   }
 ];
 
-const USER_ID = "432407062194946048"; 
+const USER_ID = "1206482053630005248"; 
 const BACKGROUND_IMAGE = "assets/images/star.gif"; 
 const STATUS = {
   dnd: {
