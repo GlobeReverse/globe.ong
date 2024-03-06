@@ -1,9 +1,10 @@
-// Remade my self since the original was fucking obfuscated for no reason???
+// Remade all my self since the original was fucking obfuscated for no reason???
 async function Update() {
     const request = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`)
     const Userdata = await request.json()
     
-    if (!Userdata.success) return
+    if (!Userdata.success) 
+        return
 
     // Status Color
     document.getElementById("status").style.backgroundColor = STATUS[Userdata.data.discord_status].color
@@ -12,7 +13,8 @@ async function Update() {
     document.getElementById('av').src = `https://cdn.discordapp.com/avatars/${Userdata.data.discord_user.id}/${Userdata.data.discord_user.avatar}`
 
     // Badges
-    if (document.getElementById('badge')) return 
+    if (document.getElementById('badge')) 
+        return 
 
     for (let i = 0; i < BADGES.length; i++) {
         const Parent = document.createElement("div");
