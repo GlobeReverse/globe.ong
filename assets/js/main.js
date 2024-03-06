@@ -2,9 +2,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("overlay")
     const enterButton = document.getElementById("enterButton")
     const backgroundVideo = document.getElementById("backgroundVideo")
+    const theme = "chill"
 
     backgroundVideo.controls = false
-    backgroundVideo.src = "https://cdn.discordapp.com/attachments/1206489703457628182/1212379211663151144/Song_2_1.mp4?ex=65f19f20&is=65df2a20&hm=63bcc8f799f9ba1dd405f2263f68ec17e89e2f9c1862188990ec94dff47e20b9&"
+
+    if (theme == "chill") {
+        backgroundVideo.src = "https://cdn.discordapp.com/attachments/1211139202104696875/1214921211344195614/song_1.mp4?ex=65fade8c&is=65e8698c&hm=975a1531e82a2748c1ad4e9a467af18aff221b6c47ea275b262dfec14fa238dc&"
+    } 
+
+    if (theme == "drill") {
+        backgroundVideo.src = "https://cdn.discordapp.com/attachments/1211139202104696875/1214918567707803738/rap.mp4?ex=65fadc16&is=65e86716&hm=16a0340874d24f7fa81e992dc2d92baae148a890ec387b42be362e2d04a36ea2&"
+    }
+
+    if (theme == "rap") {
+        backgroundVideo.src = "https://drive.usercontent.google.com/download?id=1cBN8DqOv5eLNopVYiJfUHlLNsRyX7pli&export=download&authuser=0"
+    }
 
     enterButton.addEventListener("click", function() {
         backgroundVideo.play()
