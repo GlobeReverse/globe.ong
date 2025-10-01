@@ -1,4 +1,3 @@
-// Remade all my self since the original was fucking obfuscated for no reason???
 async function Update() {
     const request = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`)
     const Userdata = await request.json()
@@ -30,6 +29,7 @@ async function Update() {
 }
 
 Update()
+
 const socket = new WebSocket('wss://api.lanyard.rest/socket')
 
 socket.addEventListener('open', (event) => {
